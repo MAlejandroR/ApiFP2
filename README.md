@@ -19,7 +19,7 @@ Planificación
 |------|----------------------------------|-----------|-------------|
 | RNF1 | Documentar con git el proyecto   | Alta      | En progreso |
 | RF2  | Dockerizar la base de datos      | Alta      | En progreso |
-| RF3  | Integración con sistema de pagos | Alta      | Completada  |
+| RF3  |  |
 
 
 
