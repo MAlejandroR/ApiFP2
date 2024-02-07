@@ -1,0 +1,112 @@
+models:
+  Family:
+    id: id
+    familyCode: string:20 unique
+    familyName: string:50
+    timestamps: timestamps
+
+  Project:
+    id: id
+    title: string:50 unique
+    logo: binary nullable
+    web: string:100 nullable
+    projectDescription: text nullable
+    state: enum:Pendiente,Completado,En Curso
+    initDate: date nullable
+    endDate: date nullable
+    timestamps: timestamps
+
+  Entity:
+    id: id
+    entityName: string:70
+    entityCode: string:20 unique
+    web: string:100 nullable
+    email: string:70 nullable
+    timestamps: timestamps
+
+  User:
+    id: id
+    login: string:50 unique
+    userName: string:20 nullable
+    surname: string:100 nullable
+    email: string:70 nullable
+    linkedIn: string:30 nullable
+    entities_id: id foreign:entities
+    timestamps: timestamps
+
+  Technology:
+    id: id
+    tag: string:50 unique
+    techName: string:70
+    timestamps: timestamps
+
+  Favourite:
+    id: id
+    projects_id: id foreign:projects
+    users_id: id foreign:users
+    timestamps: timestamps
+
+  Implement:
+    id: id
+    projects_id: id foreign:projects
+    technologies_id: id foreign:technologies
+    timestamps: timestamps
+
+  Collaboration:
+    id: id
+    projects_id: id foreign:projects
+    users_id: id foreign:users
+    families_id: id foreign:families
+    isManager: boolean
+    timestamps: timestamps
+
+controllers:
+  FamilyController:
+    resource: api
+    methods: ['index', 'store', 'show', 'update', 'destroy']
+
+  ProjectController:
+    resource: api
+    methods: ['index', 'store', 'show', 'update', 'destroy']
+
+  EntityController:
+    resource: api
+    methods: ['index', 'store', 'show', 'update', 'destroy']
+
+  UserController:
+    resource: api
+    methods: ['index', 'store', 'show', 'update', 'destroy']
+
+  TechnologyController:
+    resource: api
+    methods: ['index', 'store', 'show', 'update', 'destroy']
+
+  FavouriteController:
+    resource: api
+    methods: ['index', 'store', 'show', 'update', 'destroy']
+
+  ImplementController:
+    resource: api
+    methods: ['index', 'store', 'show', 'update', 'destroy']
+
+  CollaborationController:
+    resource: api
+    methods: ['index', 'store', 'show', 'update', 'destroy']
+
+seeds:
+  Family:
+    count: 5
+  Project:
+    count: 5
+  Entity:
+    count: 5
+  User:
+    count: 5
+  Technology:
+    count: 5
+  Favourite:
+    count: 5
+  Implement:
+    count: 5
+  Collaboration:
+    count: 5

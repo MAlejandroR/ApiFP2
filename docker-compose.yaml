@@ -1,0 +1,25 @@
+version: "3.8"
+services:
+  mysql:
+    image: mysql
+    environment:
+      - MYSQL_USER=${DB_USERNAME}
+      - MYSQL_PASSWORD=${DB_PASSWORD}
+      - MYSQL_DATABASE=${DB_DATABASE}
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD_ROOT}
+    ports:
+      - ${DB_PORT}:3306
+    volumes:
+      - ./mysql:/var/lib/mysql
+#      - ./datos.sql:/docker-entrypoint-initdb.d/datos.sql
+  pypmyadmin:
+    image: phpmyadmin
+    depends_on:
+      - mysql
+    ports:
+      - ${DB_PORT_PHPMYADMIN}:80
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOST=mysql
+
+

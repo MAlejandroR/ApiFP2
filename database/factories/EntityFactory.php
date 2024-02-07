@@ -5,16 +5,15 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 use App\Models\Entity;
-use App\Models\User;
 
-class UserFactory extends Factory
+class EntityFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = User::class;
+    protected $model = Entity::class;
 
     /**
      * Define the model's default state.
@@ -22,12 +21,10 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'login' => $this->faker->regexify('[A-Za-z0-9]{50}'),
-            'userName' => $this->faker->firstName(),
-            'surname' => $this->faker->name('[A-Za-z0-9]{100}'),
+            'entityName' => $this->faker->regexify('[A-Za-z0-9]{70}'),
+            'entityCode' => $this->faker->regexify('[A-Za-z0-9]{20}'),
+            'web' => $this->faker->url(),
             'email' => $this->faker->safeEmail(),
-            'linkedIn' => $this->faker->name(),
-            'entities_id' => Entity::factory(),
         ];
     }
 }

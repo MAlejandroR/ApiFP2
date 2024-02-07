@@ -4,9 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class User extends Model
+class Entity extends Model
 {
     use HasFactory;
 
@@ -16,12 +15,10 @@ class User extends Model
      * @var array
      */
     protected $fillable = [
-        'login',
-        'userName',
-        'surname',
+        'entityName',
+        'entityCode',
+        'web',
         'email',
-        'linkedIn',
-        'entities_id',
     ];
 
     /**
@@ -31,11 +28,5 @@ class User extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'entities_id' => 'integer',
     ];
-
-    public function entities(): BelongsTo
-    {
-        return $this->belongsTo(Entity::class);
-    }
 }
